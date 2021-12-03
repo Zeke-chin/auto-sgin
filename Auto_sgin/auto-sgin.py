@@ -3,7 +3,7 @@ Author: zeke
 Date: 2021-11-26 22:04:14
 LastEditTime: 2021-12-04 02:50:00
 LastEditors: Please set LastEditors
-Description: 
+Description: https://github.com/Zeke-chin/auto-sgin
 FilePath: /undefined/Users/zeke/Downloads/自动打卡/auto-sgin.py
 '''
 import sys
