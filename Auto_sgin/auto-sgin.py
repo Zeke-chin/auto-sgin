@@ -1,17 +1,17 @@
-'''
+# coding=utf-8
+"""
 Author: zeke
 Date: 2021-11-26 22:04:14
 LastEditTime: 2021-12-04 02:50:00
 LastEditors: Please set LastEditors
 Description: https://github.com/Zeke-chin/auto-sgin
 FilePath: /undefined/Users/zeke/Downloads/自动打卡/auto-sgin.py
-'''
+"""
 import sys
 import time
 import pyautogui
 import os
 import yagmail
-
 
 # 定义全局变量global_conten
 global_conten = []
@@ -42,7 +42,7 @@ def send_email(sign):
         yag_server.send(email_to, email_title, success_content, )
     else:
         yag_server.send(email_to, error_title, error_content, )
-    # yag.send('taaa@126.com', 'subject', contents)
+        # yag.send('taaa@126.com', 'subject', contents)
 
     # 关闭连接
     yag_server.close()
@@ -62,8 +62,6 @@ def choose_click(name):
             conten("进入web出错")
             send_email(0)
             sys.exit()
-            # print('进不去web')
-            # send_email('进不去web')
 
     # 判断有未打卡
     if name == "clock":
@@ -92,21 +90,7 @@ def click_png(png):
         only_click('yes.png')
         send_email('success')
 
-
-
-# 打开微信开发者工具
-# os.system('D:\微信web开发者工具\微信开发者工具.exe')
-# time.sleep(2)
-
-# x_scrm,y_scrm = pyautogui.size()
-# print ("当前屏幕的分辨率是{}*{}".format(x_scrm,y_scrm))
-# x,y = pyautogui.position()
-# print ("当前鼠标的X轴的位置为：{}，Y轴的位置为：{}".format(x,y))
-# a = 'bar.png'
-# x,y,width,height =  pyautogui.locateOnScreen(a)
-# print ("该图标在屏幕中的位置是：X={},Y={}，宽{}像素,高{}像素".format(x,y,width,height))
-
-
+        
 # 点击bar并输入地址
 def in_web():
     # 输入地址
@@ -119,12 +103,8 @@ def in_web():
     pyautogui.hotkey('\n')
     time.sleep(2)
 
-    # 刷新页面
+    # 刷新页面--两步操作
     choose_click('dad')
-
-    # time.sleep(1)
-    # click_png('...2.png')
-    # time.sleep(1)
 
 
 def rec_prime():
@@ -150,6 +130,7 @@ def rec_prime():
             send_email(0)
             sys.exit()
 
+
 # 切换用户
 def switch_user():
     click_png('user1.png')
@@ -162,28 +143,13 @@ def switch_user():
 def main():
     in_web()
     # switch_user()
-    # pyautogui.typewrite(message='201904020811',
-    #                     interval=0.01)
-    # pyautogui.press('tab')
-    # pyautogui.typewrite(message='021049',
-    #                     interval=0.01)
-    # choose_click('clock')
+    # 判断是否打卡
     if choose_click('clock') != 0:
         conten('已打卡')
-        # send_email('已打卡')
         send_email(0)
     else:
         conten('未打卡 进入打卡0')
-
-    rec_prime()
-
-
-    # pyautogui.press('\n')
-    # send_email("text2")
-    # nd_two = np.array([[1, 2, 3], [4, 5, 6]])
-    # print(nd_two)
-    # in_web()
-    #
+        rec_prime()
 
 
 if __name__ == '__main__':
